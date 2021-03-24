@@ -3,8 +3,8 @@ import time
 pen = turtle.Turtle()
 a = [3, 4, 5, 6, 7, 8, 9]
 angle = [120, 90, 72, 60, 51.45, 45, 40]
-dist = [-10, -20, -30, -40, -50, -60, -70]
-penForward = [40, 60, 70, 80, 90, 100, 110]
+dist = [-5, -10, -15, -20, -25, -30, -40]
+penForward = [25, 45, 60, 70, 80, 90, 100]
 colors = ['red', 'orange', 'yellow', 'green', 'blue', 'darkblue', 'purple']
 
 for i in range(7):
@@ -16,7 +16,7 @@ for i in range(7):
         pen.left(angle[i])
 
     pen.penup()
-    pen.setpos(dist[i], dist[i])
+    pen.setpos(dist[i], 3.5*(dist[i]))
     pen.pendown()
 
 time.sleep(5)
