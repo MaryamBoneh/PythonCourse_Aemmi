@@ -1,7 +1,13 @@
 # -------------init---------------
 print('Loading...')
 
-f = open('Assignment5/translate.txt')
+try:
+    f = open('Assignment5/translate.txt')
+
+except Exception as e:
+    print("error: ", e)
+    exit()
+
 big_text = f.read()
 parts = big_text.split('\n')
 
