@@ -10,7 +10,6 @@ except Exception as e:
 
 big_text = f.read()
 parts = big_text.split('\n')
-
 words = []
 i = 0
 
@@ -25,16 +24,18 @@ print('data loaded! \nwelcome dear user!')
 
 def addNewWord():
     english_text = input('please enter the english word: ')
-    persian_text = input('please enter the persian word: ')
-
-    words.append({'english': english_text, 'persian': persian_text})
-
-    f = open('Assignment5/translate.txt', 'a')
-    f.write('\n'+english_text)
-    f.write('\n'+persian_text)
-    f.close()
-
-    print('Done!')
+    for i in range(len(words)):
+        if english_text == words[i]['english']:
+            print('this word exists in the dictionary')
+            break
+    else:
+        persian_text = input('please enter the persian word: ')
+        words.append({'english': english_text, 'persian': persian_text})
+        f = open('Assignment5/translate.txt', 'a')
+        f.write('\n'+english_text)
+        f.write('\n'+persian_text)
+        f.close()
+        print('Done!')
     menu()
 
 
@@ -44,6 +45,8 @@ def translationToPersian():
 
     for i in range(len(user_words)):
         for j in range(len(words)):
+            if '.' in user_words[i]:
+                user_words[i] = user_words[i][0:-1]
             if words[j]['english'] == user_words[i]:
                 print(words[j]['persian'], end=' ')
                 break
@@ -58,6 +61,8 @@ def translationToEnglish():
 
     for i in range(len(user_words)):
         for j in range(len(words)):
+            if '.' in user_words[i]:
+                user_words[i] = user_words[i][0:-1]
             if words[j]['persian'] == user_words[i]:
                 print(words[j]['english'], end=' ')
                 break
