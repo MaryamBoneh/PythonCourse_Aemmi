@@ -6,24 +6,22 @@ class Fraction():
         self.result = {}
 
     def mul(self):
-        self.result = {'n': self.a['n'] * self.b['n'],
-                       'd': self.a['d'] * self.b['d']}
-        print(self.result['n'], '/', self.result['d'])
+        self.result = {'n': self.a['n'] * self.b['n'], 'd': self.a['d'] * self.b['d']}
+        return self.result
 
     def sum(self):
         self.result = {'n': self.a['n'] * self.b['d'] + self.b['n'] * self.a['d'],
                        'd': self.a['d'] * self.b['d']}
-        print(self.result['n'], '/', self.result['d'])
+        return self.result
 
     def divide(self):
-        self.result = {'n': self.a['n'] * self.b['d'],
-                       'd': self.a['d'] * self.b['n']}
-        print(self.result['n'], '/', self.result['d'])
+        self.result = {'n': self.a['n'] * self.b['d'], 'd': self.a['d'] * self.b['n']}
+        return self.result
 
     def minus(self):
         self.result = {'n': self.a['n'] * self.b['d'] - self.b['n'] * self.a['d'],
                        'd': self.a['d'] * self.b['d']}
-        print(self.result['n'], '/', self.result['d'])
+        return self.result
 
 
 numerator1 = int(input('please enter the numerator of first fraction: '))
@@ -37,12 +35,16 @@ frcn = Fraction(numerator1, denominator1, numerator2, denominator2)
 while True:
     select = input(' 1- sum \n 2- minus \n 3- mul \n 4- divide \n 5- exit \n ')
     if select == '1':
-        frcn.sum()
+        result = frcn.sum()
+        print(result['n'], '/', result['d'])
     elif select == '2':
-        frcn.minus()
+        result = frcn.minus()
+        print(result['n'], '/', result['d'])
     elif select == '3':
-        frcn.mul()
+        result = frcn.mul()
+        print(result['n'], '/', result['d'])
     elif select == '4':
-        frcn.divide()
+        result = frcn.divide()
+        print(result['n'], '/', result['d'])
     else:
         exit()
