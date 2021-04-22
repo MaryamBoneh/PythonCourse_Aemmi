@@ -1,38 +1,42 @@
 
 class Time():
-    def __init__(self, h, m, s):
-        self.time1 = {'h': int(h), 'm': int(m), 's': int(s)}
+    def __init__(self, h=0, m=0, s=0):
+       self.h = int(h)
+       self.m = int(m)
+       self.s = int(s)
 
-    def sum(self, h, m, s):
-        hour = self.time1['h'] + h
-        minut = self.time1['m'] + m
-        second = self.time1['s'] + s
+    def sum(self, other):
+        result = Time(0,0,0)
+        result.h = self.h + other.h
+        result.m = self.m + other.m
+        result.s = self.s + other.s
 
-        if second > 60:
-            second -= 60
-            minut += 1
-        if minut > 60:
-            minut -= 60
-            hour += 1
+        if result.s > 60:
+            result.s -= 60
+            result.m += 1
+        if result.m > 60:
+            result.m -= 60
+            result.h += 1
 
-        return [hour, minut, second]
+        return [result.h, result.m, result.s]
 
-    def minus(self, h, m, s):
-        hour = self.time1['h'] - h
-        minut = self.time1['m'] - m
-        second = self.time1['s'] - s
+    def minus(self, other):
+        result = Time(0,0,0)
+        result.h = self.h - other.h
+        result.m = self.m - other.m
+        result.s = self.s - other.s
 
-        if second < 0:
-            second += 60
-            minut -= 1
-        if minut < 0:
-            minut += 60
-            hour -= 1
+        if result.s < 0:
+            result.s += 60
+            result.m -= 1
+        if result.m < 0:
+            result.m += 60
+            result.h -= 1
 
-        return [hour, minut, second]
+        return [result.h, result.m, result.s]
 
     def timeToSeconds(self):
-        return self.time1['h'] * 3600 + self.time1['m'] * 60 + self.time1['s']
+        return self.h * 3600 + self.m * 60 + self.s
 
     def secondsToTime(self):
         time = int(input('pleas enter seconds: '))
@@ -53,13 +57,15 @@ while True:
     if select == '1':
         time = input('please enter time 2 with format {hh:mm:ss}: ')
         time = time.split(':')
-        result = t.sum(int(time[0]), int(time[1]), int(time[2]))
+        t2 = Time(time[0], time[1], time[2])
+        result = t.sum(t2)
         print(result[0], ':', result[1], ':', result[2])
         
     elif select == '2':
         time = input('please enter time 2 with format {hh:mm:ss}: ')
         time = time.split(':')
-        result = t.minus(int(time[0]), int(time[1]), int(time[2]))
+        t2 = Time(time[0], time[1], time[2])
+        result = t.minus(t2)
         print(result[0], ':', result[1], ':', result[2])
         
     elif select == '3':
