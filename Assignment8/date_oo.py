@@ -14,35 +14,37 @@ class DateClass():
     def show(self):
         print(self.year, '/', self.month, '/', self.day)
 
-    def add(self, y, m, d):
-        day = self.day + d
-        month = self.month + m
-        year = self.year + y
+    def add(self, other):
+        result = DateClass(None, None, None)
+        result.day = self.day + other.day
+        result.month = self.month + other.month
+        result.year = self.year + other.year
 
-        if day > 30:
-            day -= 30
-            month += 1
-        if month > 12:
-            month -= 12
-            year += 1
+        if result.day > 30:
+            result.day -= 30
+            result.month += 1
+        if result.month > 12:
+            result.month -= 12
+            result.year += 1
 
-        return {'y': year, 'm': month, 'd': day}
+        return {'y': result.year, 'm': result.month, 'd': result.day}
 
-    def sub(self, y, m, d):
-        day = self.day - d
-        month = self.month - m
-        year = self.year - y
+    def sub(self, other):
+        result = DateClass(None, None, None)
+        result.day = self.day - other.day
+        result.month = self.month - other.month
+        result.year = self.year - other.year
 
-        if day < 1:
-            day += 30
-            month -= 1
-        if month < 1:
-            month += 12
-            year -= 1
-        if month == 0:
-            month = 12
+        if result.day < 1:
+            result.day += 30
+            result.month -= 1
+        if result.month < 1:
+            result.month += 12
+            result.year -= 1
+        if result.month == 0:
+            result.month = 12
 
-        return {'y': year, 'm': month, 'd': day}
+        return {'y': result.year, 'm': result.month, 'd': result.day}
 
     def getMonthName(self):
         months = ['farvardin', 'ordibehesht', 'khordad', 'tir', 'mordad', 'shahrivar', 'mehr', 'aban', 'azar', 'dey', 'bahman', 'esfand']
@@ -65,8 +67,6 @@ class DateClass():
 
 # d = DateClass(1400, 2, 1)
 # d.show()
-# print(d.add(2, 12, 3))
-# print(d.sub(1377, 11, 28))
 # if d.isLeapYear():
 #     print('is leap')
 # else:

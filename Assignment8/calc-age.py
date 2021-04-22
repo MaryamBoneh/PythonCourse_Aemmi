@@ -10,7 +10,7 @@ birthDayOBJ = DateClass(int(birthDay[0]), int(birthDay[1]), int(birthDay[2]))
 todayOBJ = DateClass(int(today[0]), int(today[1]), int(today[2]))
 
 if birthDayOBJ.isValidDate() and todayOBJ.isValidDate():
-    age = todayOBJ.sub(int(birthDay[0]), int(birthDay[1]), int(birthDay[2]))
+    age = todayOBJ.sub(birthDayOBJ)
     print('you have', age['y'], 'year and', age['m'], 'month and', age['d'], 'day')
 else:
     print('input text is incorrect.')
