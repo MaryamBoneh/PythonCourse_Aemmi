@@ -1,5 +1,4 @@
 import pygame
-import time
 from Objects import Apple, Pear, Bomb
 from Snake import Snake
 
@@ -20,7 +19,7 @@ if __name__ == "__main__":
     bomb = Bomb(dsply)
     
     # Show Score Text
-    font = pygame.font.Font('Assignment11/assets/font/arial.ttf', 26)
+    font = pygame.font.Font('Assignment11/assets/font/ALGER.ttf', 32)
     text = font.render('Score: 0', True, (255, 255, 255))
     textRect = text.get_rect()
     textRect.center = (width // 2, 30)
@@ -48,7 +47,6 @@ if __name__ == "__main__":
             bomb = Bomb(dsply)
             text = font.render(f'Score: {snake.score}', True, (255, 255, 255))
         
-        
         dsply.blit(bg, (0, 0))
         dsply.blit(text, textRect)
         snake.move()
@@ -58,7 +56,7 @@ if __name__ == "__main__":
         pear.show()
         pygame.display.update()
         clock.tick(30)
-                    
+
         if snake.score < 0:
             snake.game_over()
     

@@ -16,36 +16,24 @@ class Snake():
         self.x_change = 0
         self.y_change = 0
         self.grow_dir = ''
+        self.body = []
 
 
     def show(self):
-        pygame.draw.rect(self.dsply, self.color, [self.x, self.y, self.w, self.h])
+        head = [self.x, self.y]
+        self.body.append(head)
+        pygame.draw.circle(self.dsply, self.color, [self.x, self.y], 10)
         
-        if self.grow_dir == 'l':
-            for i in range(self.score + 1):
-                if i % 2 == 0:
-                    pygame.draw.rect(self.dsply, self.color, [self.x + (i*16), self.y, self.w, self.h])
-                else:
-                    pygame.draw.rect(self.dsply, self.color2, [self.x + (i*16), self.y , self.w, self.h])
-        elif self.grow_dir == 'r':
-            for i in range(self.score + 1):
-                if i % 2 == 0:
-                    pygame.draw.rect(self.dsply, self.color, [self.x - (i*16), self.y, self.w, self.h])
-                else:
-                    pygame.draw.rect(self.dsply, self.color2, [self.x - (i*16), self.y , self.w, self.h])
-        elif self.grow_dir == 'u':
-            for i in range(self.score + 1):
-                if i % 2 == 0:
-                    pygame.draw.rect(self.dsply, self.color, [self.x , self.y + (i*16), self.w, self.h])
-                else:
-                    pygame.draw.rect(self.dsply, self.color2, [self.x , self.y + (i*16) , self.w, self.h])
-        elif self.grow_dir == 'd':
-            for i in range(self.score + 1):
-                if i % 2 == 0:
-                    pygame.draw.rect(self.dsply, self.color, [self.x , self.y - (i*16), self.w, self.h])
-                else:
-                    pygame.draw.rect(self.dsply, self.color2, [self.x , self.y - (i*16), self.w, self.h])
-
+        if self.score < len(self.body):
+            del self.body[0]
+            
+        for i in range(len(self.body)):
+            if i % 2 == 0:
+                pygame.draw.circle(self.dsply, self.color, [self.body[i][0] , self.body[i][1]], 10)
+            else:
+                pygame.draw.circle(self.dsply, self.color2, [self.body[i][0] , self.body[i][1]], 10)
+            
+        
     def move(self):
         if self.grow_dir == 'l':
             self.x -= self.speed
@@ -73,20 +61,20 @@ class Snake():
 
 
     def eat(self, apple_x, apple_y, pear_x, pear_y, bomb_x, bomb_y, r):
-        if apple_x - r <= self.x <= apple_x + r and apple_y - r <= self.y <= apple_y + r:
+        if apple_x - r <= self.x <= apple_x + (1.5 * r) and apple_y - r <= self.y <= apple_y + (1.5 * r):
             self.score += 1
             return 'apple'        
-        if pear_x - r <= self.x <= pear_x + r and pear_y - r <= self.y <= pear_y + r:
+        if pear_x - r <= self.x <= pear_x + (1.5 * r) and pear_y - r <= self.y <= pear_y + (1.5 * r):
             self.score += 2
             return 'pear'
-        if bomb_x - r <= self.x <= bomb_x + r and bomb_y - r <= self.y <= bomb_y + r:
+        if bomb_x - r <= self.x <= bomb_x + (1.5 * r) and bomb_y - r <= self.y <= bomb_y + (1.5 * r):
             self.score -= 1
             return 'bomb'
         
         
     def game_over(self):
         self.speed = 0
-        font_go = pygame.font.Font('Assignment11/assets/font/arial.ttf', 46)
+        font_go = pygame.font.Font('Assignment11/assets/font/ALGER.ttf', 46)
         text_go = font_go.render('Game Over!', True, (255, 255, 255), (0, 0, 0))
         textRect_go = text_go.get_rect()
         textRect_go.center = (300, 300)

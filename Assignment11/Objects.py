@@ -7,11 +7,7 @@ class Object():
         self.y = random.randint(65, 530)
         self.r = 15
         self.dsply = display
-
-    def show(self):
-        apple_pic = pygame.image.load("Assignment11/assets/img/apple.png")
-        self.dsply.blit(apple_pic, (self.x, self.y))
-    
+        
         
 class Apple(Object):
     def __init__(self, display):
