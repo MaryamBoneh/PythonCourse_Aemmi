@@ -17,7 +17,7 @@ class Snake():
         self.y_move = False
         self.x_change = 0
         self.y_change = 0
-        self.grow_dir = ''
+        self.direction = ''
         self.body = []
 
 
@@ -37,20 +37,20 @@ class Snake():
             
         
     def move(self):
-        if self.grow_dir == 'l':
+        if self.direction == 'l':
             self.x -= self.speed
             
-        elif self.grow_dir == 'r':
+        elif self.direction == 'r':
             self.x += self.speed
 
-        elif self.grow_dir == 'u':
+        elif self.direction == 'u':
             self.y -= self.speed
 
-        elif self.grow_dir == 'd':
+        elif self.direction == 'd':
             self.y += self.speed
 
 
     def eat(self, apple_x, apple_y, r):
-        if apple_x - r <= self.x <= apple_x + (1.5 * r) and apple_y - r <= self.y <= apple_y + (1.5 * r):
+        if pygame.Rect(self.x, self.y, 16, 16).colliderect(pygame.Rect(apple_x, apple_y , 16, 16)):
             self.score += 1
             return True  
