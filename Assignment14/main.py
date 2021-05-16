@@ -52,12 +52,11 @@ if __name__ == "__main__":
 
         dsply.blit(bg, (0, 0))
         dsply.blit(text, textRect)
-        
-        snake.Collision()
-        print(snake.direction)
-            
+                    
         apple.show()
         snake.show()
+        print('apple: ',apple.x, apple.y)
+        snake.Collision()
         pygame.display.update()
-        clock.tick(30)
+        clock.tick(50)
     
