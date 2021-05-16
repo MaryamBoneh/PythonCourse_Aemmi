@@ -44,8 +44,8 @@ class Car:
     def show(self):
         self.area = Game.dsply.blit(self.image, (self.x, self.y))
         self.y += Car.speed
-            
 
+        
 class Game:
     width = 400
     height = 661
@@ -54,9 +54,24 @@ class Game:
     dsply = pygame.display.set_mode((width, height))
     pygame.display.set_caption('Crazy Taxi')
     bg = pygame.image.load("Assignment13/Crazy-Taxi/assets/img/asphalt-road.jpg")
+    bgY1 = 0
+    bgY2 = width
+    movingUpSpeed = 10
     font_go = pygame.font.Font('Assignment13/Crazy-Taxi/assets/font/atari_full.ttf', 32)
     font_pak = pygame.font.Font('Assignment13/Crazy-Taxi/assets/font/atari_full.ttf', 12)
 
+    def update(self):
+        Game.bgY1 -= Game.movingUpSpeed
+        Game.bgY2 -= Game.movingUpSpeed
+        if Game.bgY1 <= -Game.width:
+            Game.bgY1 = Game.width
+        if Game.bgY2 <= -Game.width:
+            Game.bgY2 = Game.width
+            
+    def render(self):
+        Game.dsply.blit(Game.bg, (0, Game.bgY1))
+        Game.dsply.blit(Game.bg, (0, Game.bgY2))
+        
     @staticmethod
     def play():
         cars = []
@@ -77,6 +92,8 @@ class Game:
                         taxi.dir = 't'
 
             Game.dsply.blit(Game.bg, (0, 0))
+            Game.update(Game)
+            Game.render(Game)
 
             if random.random() < 0.01:
                 cars.append(Car())
@@ -106,7 +123,6 @@ class Game:
             Car.speed += 0.005   
             taxi.show()
             taxi.move()
-                
             pygame.display.update()
             Game.clock.tick(Game.fps)
 
