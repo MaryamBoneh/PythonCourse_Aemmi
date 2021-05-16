@@ -41,10 +41,10 @@ if __name__ == "__main__":
                     
         if snake.x_move:     
             if snake.y < apple.y:
-                snake.direction = 'd'        
+                snake.direction = 'd'
             elif snake.y > apple.y:
-                snake.direction = 'u'        
-                    
+                snake.direction = 'u'
+
         if snake.eat(apple.x, apple.y, apple.r):
             apple = Apple(dsply)
             snake.x_move = False
@@ -52,9 +52,12 @@ if __name__ == "__main__":
 
         dsply.blit(bg, (0, 0))
         dsply.blit(text, textRect)
-        snake.move()
+        
+        snake.Collision()
+        print(snake.direction)
+            
         apple.show()
         snake.show()
         pygame.display.update()
-        clock.tick(50)
+        clock.tick(30)
     
