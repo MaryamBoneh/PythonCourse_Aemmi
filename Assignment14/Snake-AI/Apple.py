@@ -9,5 +9,5 @@ class Apple():
         self.dsply = display
 
     def show(self):
-        apple_pic = pygame.image.load("Assignment14/assets/img/apple.png")
+        apple_pic = pygame.image.load("Assignment14/Snake-AI/assets/img/apple.png")
         self.dsply.blit(apple_pic, (self.x, self.y))

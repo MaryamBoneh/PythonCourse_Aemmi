@@ -10,8 +10,8 @@ if __name__ == "__main__":
 
     dsply = pygame.display.set_mode((width, height))
     pygame.display.set_caption('Super Snake') 
-    bg = pygame.image.load("Assignment14/assets/img/background.png")
-    font = pygame.font.Font('Assignment14/assets/font/ALGER.ttf', 32)
+    bg = pygame.image.load("Assignment14/Snake-AI/assets/img/background.png")
+    font = pygame.font.Font('Assignment14/Snake-AI/assets/font/ALGER.ttf', 32)
     clock = pygame.time.Clock()
     
     snake = Snake(dsply)
