@@ -2,9 +2,7 @@
 import sys
 import os
 
-
 from PySide6.QtWidgets import QApplication, QWidget
-from PySide6.QtCore import QFile
 from PySide6.QtUiTools import QUiLoader
 
 
@@ -19,7 +17,6 @@ class Main(QWidget):
 
 
     def removeLineBreaks(self):
-        self.ui.txt_input.toPlainText().replace('\n', ' ')
         self.ui.txt_result.setText(self.ui.txt_input.toPlainText().replace('\n', ' '))
         
         
