@@ -44,6 +44,7 @@ class Main(QWidget):
             percent = readsofar * 100 / totalsize
             self.ui.progressBar.setValue(int(percent))
 
+    #  http://player.iranseda.ir/downloadfile/?VALID=TRUE&attid=113374&VALID=TRUE&q=10&g=133329&t=1&w=4
 
 if __name__ == "__main__":
     app = QApplication([])
