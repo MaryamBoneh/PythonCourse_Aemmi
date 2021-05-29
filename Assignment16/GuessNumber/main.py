@@ -15,6 +15,7 @@ class Main(QWidget):
         self.ui.show()
         
         self.ui.btn_guess.clicked.connect(self.guess)
+        self.ui.btn_new.clicked.connect(self.new_game)
         self.number = random.randint(1, 20)
         self.score = 5
         self.ui.lbl_joon.setText(str(self.score))
@@ -50,6 +51,7 @@ class Main(QWidget):
         self.number = random.randint(1, 20)
         self.score = 5
         self.ui.txt_input.setText('')
+        self.ui.lbl_joon.setText(str(self.score))
                 
 
 if __name__ == "__main__":
