@@ -81,7 +81,7 @@ def remove():
     name = input('please enter the product name: ')
 
     if any(name == p[1] for p in products):
-        my_cursor.execute(f"DELETE FROM products WHERE name = '{name}'")
+        my_cursor.execute(f"DELETE FROM products WHERE NAME = '{name}'")
         updateProductList()
         print(Fore.GREEN + 'Done!')
     else:
