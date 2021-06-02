@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from sqlite3 import connect
 
 
@@ -32,5 +32,15 @@ class Database:
             return []
 
     @staticmethod
-    def delete():
-        pass
+    def delete(id):
+        try:
+            my_con = connect('Assignment18/MessageBox/messages.db')
+            my_cursor = my_con.cursor()
+            my_cursor.execute(f"DELETE FROM messages WHERE ID = {id}")
+            my_con.commit()
+            my_con.close()
+            return True
+            
+        except Exception as e:
+            print("error:", e)
+            return False
