@@ -13,3 +13,5 @@
 ## 5
 ![result_5](https://user-images.githubusercontent.com/72157067/122576006-831eaf80-d066-11eb-9d47-7c66d5cc46f8.jpg)
 
+## 6
+![6](https://user-images.githubusercontent.com/72157067/123667549-7f9ddc00-d84f-11eb-8d46-b97599fad1db.jpg)
