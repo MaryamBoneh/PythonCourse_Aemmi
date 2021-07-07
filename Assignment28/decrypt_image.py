@@ -1,5 +1,4 @@
 import cv2, glob, random, argparse
-from PIL import Image
 import numpy as np
 
 my_parser = argparse.ArgumentParser()
