@@ -1,4 +1,4 @@
-import cv2, glob, random, argparse
+import cv2, random, argparse
 import numpy as np
 
 my_parser = argparse.ArgumentParser()

@@ -1,4 +1,4 @@
-import cv2, glob, random, argparse
+import cv2, random, argparse
 import numpy as np
 
 my_parser = argparse.ArgumentParser()
@@ -16,6 +16,7 @@ def encrypt():
     for i in range(row):
         for j in range(col):
             key[i, j] = random.randint(0, 255)
+
     np.save(f'{args.output_path}/key.npy', key)
 
     for m in range(row):
