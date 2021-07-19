@@ -13,22 +13,31 @@ for m in range(1, row - 1):
 
 _, thresh = cv2.threshold(image,110,255,cv2.THRESH_BINARY)
 
-rows = []
+tops = []
+buttoms = []
+flag = True
 for m in range(1, row - 1):
     find_top = False
     find_buttom = True
     if find_buttom:
         for n in range(col):
             if not find_top:
-                if thresh[m, n] == 255:
-                    rows.append(m)
+                if thresh[m, n] == 255 and thresh[m+1, n] == 255:
+                    tops.append(m)
                     find_top = True
+                    flag = True
             else:
                 find_buttom = False
                 break
-    if not find_buttom:
+    if not find_buttom and flag == True:
         if thresh[m, 1:col-1].all():
-            thresh[m, 0:col] = 40
-            rows.append(m)
+                thresh[m, 0:col] = 40
+                buttoms.append(m)
+                flag = False
+
+
+
+
+
 cv2.imwrite('Assignment29/assets/img/noisey_OCR_output.jpg', thresh)
-print(rows)      
+print(tops, buttoms)      
