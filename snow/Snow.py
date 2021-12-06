@@ -6,9 +6,9 @@ class Snow:
     def __init__(self):
         self.x = random.randint(0, image.shape[1])
         self.y = random.randint(-800, image.shape[0])
-        self.width = random.randint(4, 8)
-        self.direction = random.choice([10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10])
-        self.speed = random.choice([15, 20, 25, 30])
+        self.width = random.randint(3, 6)
+        self.direction = random.choice([5, 4, 2, 0, -2, -4, -5])
+        self.speed = random.choice([5, 7, 10, 13])
 
     def move(self):
         self.y += self.speed
@@ -21,10 +21,10 @@ row, col, _ = image.shape
 snow_list = []
 c = 10
 
-for _ in range(200):
+for _ in range(450):
   snow_list.append(Snow())
 
-for j in range(40):
+for j in range(89):
   for i, s in enumerate(snow_list):
     s.move()
   image = image_temp.copy()
@@ -37,6 +37,7 @@ for j in range(40):
 imgs = glob.glob(f'snow/img/shots/*.png')
 imgs.sort()
 frames = []
+print(imgs)
 for i in imgs:
     new_frame = Image.open(i)
     frames.append(new_frame)
@@ -44,4 +45,4 @@ for i in imgs:
 frames[0].save(f'snow/img/shots/png_to_gif.gif', format='GIF',
                append_images=frames[1:],
                save_all=True,
-               duration=250, loop=0)
+               duration=120, loop=0)
